@@ -42,7 +42,14 @@ const Hero = () => {
               maskSize: maskSize,
               ease: "power1.inOut",
             }, "<") //start at the same time as previous
-    });
+          .to('.mask-wrapper', {
+            opacity: 0,
+            })
+          .to('.overlay-logo', {opacity: 1, onComplete: () => {
+            gsap.to('.overlay-logo', { opacity: 0});
+          }}, "<") //start at the same time as previous
+          .to('.entrance-message', {duration: 1, ease: "power1.inOut", maskImage: 'radial-gradient(circle at 50% 0vh, black 50%, transparent 100%)'}, "<") //start at the same time as previous
+        });
 
     return (
         <section className="hero-section">
